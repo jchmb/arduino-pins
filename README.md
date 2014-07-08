@@ -1,6 +1,8 @@
 Arduino Pins Library
 ====================
 
+This is a Work In Progress project. Some features may be missing. Not everything may be working. If you encounter some problem, please contact me and I will have a look at it.
+
 This Arduino library provides a basic framework for an uniform treatment of pins. 
 The Arduino Pins library generalizes the concept of a Pin in such a way that it no longer matters whether the
 pin is directly connected to the Arduino, or indirectly, as "virtual" pins, e.g., when using shift register input/output pins.
