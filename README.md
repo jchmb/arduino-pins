@@ -9,13 +9,14 @@ pin is directly connected to the Arduino, or indirectly, as "virtual" pins, e.g.
 You can treat them all in the same way. This can save a lot of time. In most situations, this library can therefore be very helpful.
 However, it is not perfect. There are some trade-offs when using the library. Its usage may not always be appropriate. It is up to you to decide.
 
-This is what it can do:
-<code>[for (byte b = 0; b < 3; b++) {<br>
-		pins[b]->write(HIGH);<br>
-		delay(500);<br>
-		pins[b]->write(LOW);<br>
-		delay(500);<br>
-	}
-</code>
+Any implementation of Pin has implemented void Pin::write(int) and int Pin::read().
 
-Even though some pins may be directly connected to either the digital or analog pins, while other "virtual" pins are input/output pins of a shift register, for example.
+To use the "direct" Arduino pins in this framework, you simple have to create an instance of the RawPin class with the pin number as an argument for the constructor.
+The RawPin implementation of void Pin::write(int) and int Pin::read() are very simple.
+
+To use the "indirect" or "virtual" pins in this framework, e.g., some shift register pin Qi, as any other Arduino pin, you need to create an instance of the
+ShiftRegister class first. The constructor of the ShiftRegister class requires three arguments, which are all implementations of the Pin class. It is recommended
+that you provide instances of the RawPin class here, but in principle, this is not required. In any case, you need to provide the clock pin, the latch pin
+and the data pin. After you have instantiated the ShiftRegister class, you can retrieve ShiftRegisterPins, i.e., "virtual" pins, from it. 
+These can be retrieved by the ShiftRegisterPin* ShiftRegister::getPin(int) function. It will be created on demand, since not every pin is necessarily used.
+After this, the ShiftRegisterPin can be treated as any other Pin. 
