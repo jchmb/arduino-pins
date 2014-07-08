@@ -12,7 +12,7 @@ However, it is not perfect. There are some trade-offs when using the library. It
 Any implementation of Pin has implemented void Pin::write(int) and int Pin::read().
 
 To use the "direct" Arduino pins in this framework, you simple have to create an instance of the RawPin class with the pin number as an argument for the constructor.
-The RawPin implementation of void Pin::write(int) and int Pin::read() are very simple.
+The RawPin implementations of void Pin::write(int) and int Pin::read() are very simple.
 
 To use the "indirect" or "virtual" pins in this framework, e.g., some shift register pin Qi, as any other Arduino pin, you need to create an instance of the
 ShiftRegister class first. The constructor of the ShiftRegister class requires three arguments, which are all implementations of the Pin class. It is recommended
