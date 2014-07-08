@@ -10,11 +10,11 @@ You can treat them all in the same way. This can save a lot of time. In most sit
 However, it is not perfect. There are some trade-offs when using the library. Its usage may not always be appropriate. It is up to you to decide.
 
 This is what it can do:
-<code>[for (byte b = 0; b < 3; b++) {<br />
-		pins[b]->write(HIGH);<br />
-		delay(500);<br />
-		pins[b]->write(LOW);<br />
-		delay(500);<br />
+<code>[for (byte b = 0; b < 3; b++) {<br>
+		pins[b]->write(HIGH);<br>
+		delay(500);<br>
+		pins[b]->write(LOW);<br>
+		delay(500);<br>
 	}
 </code>
 
