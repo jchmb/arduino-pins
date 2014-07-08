@@ -5,9 +5,7 @@
 
 /*
  * Just a test to demonstrate the uniformity of direct and virtual pins
- * used interchangeably. The use of this has its ups and downsides.
- * For most purposes, it will probably have more ups than downs, 
- * but this is up to you to decide for yourself. 
+ * used interchangeably.
  */
 
 Pin* pins[3];

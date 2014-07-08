@@ -5,6 +5,16 @@ ShiftRegister::ShiftRegister(Pin* clock, Pin* latch, Pin* data) {
 	this->latch = latch;
 	this->data = data;
 	this->value = 0;
+	this->parent = NULL;
+	this->child = NULL;
+}
+
+void ShiftRegister::setParent(ShiftRegister* parent) {
+	this->parent = parent;
+}
+
+void ShiftRegister::setChild(ShiftRegister* child) {
+	this->child = child;
 }
 
 /**
@@ -34,6 +44,7 @@ ShiftRegisterPin* ShiftRegister::getPin(int offset) {
 int ShiftRegister::read() {
 	boolean state;
 	int value = 0;
+
 	this->latch->write(LOW);
 	this->latch->write(HIGH);
 
@@ -49,6 +60,10 @@ int ShiftRegister::read() {
 	return value;
 }
 
+void ShiftRegister::update() {
+	this->write(this->value);
+}
+
 /**
  * Write an int to the shift register.
  *
@@ -56,9 +71,10 @@ int ShiftRegister::read() {
  */
 void ShiftRegister::write(int value) {
 	byte state;
+
 	this->latch->write(HIGH);
 	this->latch->write(LOW);
-
+	
 	for (byte i = 0; i < 8; i++) {
 		state = !!(value & (1 << (7 - i)));
 		this->data->write(state);

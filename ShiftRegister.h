@@ -16,13 +16,18 @@ class ShiftRegister {
 		Pin* latch;
 		Pin* data;
 		ShiftRegisterPin* pins[SHIFT_REGISTER_NUM_PINS];
+		ShiftRegister* child;
+		ShiftRegister* parent;
 		int value;
 	public:
 		ShiftRegister(Pin*, Pin*, Pin*);
 		ShiftRegisterPin* getPin(int);
 		void write(int);
 		void setBit(int, int);
+		void setParent(ShiftRegister*);
+		void setChild(ShiftRegister*);
 		int read();
+		void update();
 };
 
 #endif
