@@ -10,11 +10,12 @@ You can treat them all in the same way. This can save a lot of time. In most sit
 However, it is not perfect. There are some trade-offs when using the library. Its usage may not always be appropriate. It is up to you to decide.
 
 This is what it can do:
-for (byte b = 0; b < 3; b++) {
+<code>[for (byte b = 0; b < 3; b++) {
 		pins[b]->write(HIGH);
 		delay(500);
 		pins[b]->write(LOW);
 		delay(500);
 	}
+</code>
 
 Even though some pins may be directly connected to either the digital or analog pins, while other "virtual" pins are input/output pins of a shift register, for example.
