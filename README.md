@@ -7,9 +7,10 @@ This Arduino library provides a basic framework for an uniform treatment of pins
 The Arduino Pins library generalizes the concept of a Pin in such a way that it no longer matters whether the
 pin is directly connected to the Arduino, or indirectly, as "virtual" pins, e.g., when using shift register input/output pins.
 You can treat them all in the same way. This can save a lot of time. In most situations, this library can therefore be very helpful.
-However, it is not perfect. There are some trade-offs when using the library. Its usage may not always be appropriate. It is up to you to decide.
+However, it is not perfect. There are some trade-offs when using the library. Its usage may not always be appropriate. It is up to you to decide whether this is the case.
 
-Any implementation of Pin has implemented void Pin::write(int) and int Pin::read().
+Any implementation of Pin has implemented void Pin::write(int) and int Pin::read(). You can easily add your own implementation. Currently there are two implementations:
+the RawPin and the ShiftRegisterPin.
 
 To use the "direct" Arduino pins in this framework, you simple have to create an instance of the RawPin class with the pin number as an argument for the constructor.
 The RawPin implementations of void Pin::write(int) and int Pin::read() are very simple.
