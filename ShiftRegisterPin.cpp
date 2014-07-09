@@ -6,9 +6,7 @@ ShiftRegisterPin::ShiftRegisterPin(ShiftRegister* shiftRegister, int index) {
 }
 
 int ShiftRegisterPin::read() {
-	int value = this->shiftRegister->read();
-	int state = (value >> this->index) & 1;
-	return state;
+	return this->shiftRegister->getBit(this->index);
 }
 
 void ShiftRegisterPin::write(int value) {

@@ -19,15 +19,21 @@ class ShiftRegister {
 		ShiftRegister* child;
 		ShiftRegister* parent;
 		int value;
+		boolean autoUpdate;
+		int mode;
 	public:
 		ShiftRegister(Pin*, Pin*, Pin*);
 		ShiftRegisterPin* getPin(int);
 		void write(int);
+		int getBit(int);
 		void setBit(int, int);
+		void setOverflow(ShiftRegister*);
 		void setParent(ShiftRegister*);
 		void setChild(ShiftRegister*);
+		void setMode(int);
 		int read();
 		void update();
+		void setAutoUpdate(boolean);
 };
 
 #endif
