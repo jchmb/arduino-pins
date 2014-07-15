@@ -9,8 +9,8 @@ pin is directly connected to the Arduino, or indirectly, as "virtual" pins, e.g.
 You can treat them all in the same way. This can save a lot of time. In most situations, this library can therefore be very helpful.
 However, it is not perfect. There are some trade-offs when using the library. Its usage may not always be appropriate. It is up to you to decide whether this is the case.
 
-Any implementation of Pin has implemented void Pin::write(int) and int Pin::read(). You can easily add your own implementation. Currently there are two implementations:
-the RawPin and the ShiftRegisterPin.
+Any implementation of Pin has implemented void Pin::write(int) and int Pin::read(). You can easily add your own implementation. Currently there are three implementations:
+the RawPin, the ShiftRegisterPin, and the DebugPin; the latter two being "virtual" pins.
 
 To use the "direct" Arduino pins in this framework, you simple have to create an instance of the RawPin class with the pin number as an argument for the constructor.
 The RawPin implementations of void Pin::write(int) and int Pin::read() are very simple.
@@ -21,3 +21,5 @@ that you provide instances of the RawPin class here, but in principle, this is n
 and the data pin. After you have instantiated the ShiftRegister class, you can retrieve ShiftRegisterPins, i.e., "virtual" pins, from it. 
 These can be retrieved by the ShiftRegisterPin* ShiftRegister::getPin(int) function. It will be created on demand, since not every pin is necessarily used.
 After this, the ShiftRegisterPin can be treated as any other Pin. 
+
+Also, the DebugPin can be used as a replacement of any Pin. With the help of the DebugPin, you can see on the serial monitor when certain calls are made during runtime.
